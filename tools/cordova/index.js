@@ -13,7 +13,7 @@ export const CORDOVA_ARCH = "web.cordova";
 
 export const CORDOVA_PLATFORMS = ['ios', 'android'];
 
-const CORDOVA_ANDROID_VERSION = "12.0.1";
+const CORDOVA_ANDROID_VERSION = 'github:tkhtechnology/cordova-android#f3647b5ad0d8593e75ebbdcb55eca5dfcd2c5640';
 
 export const CORDOVA_DEV_BUNDLE_VERSIONS = {
   'cordova-lib': '10.0.0',
@@ -25,7 +25,7 @@ export const CORDOVA_DEV_BUNDLE_VERSIONS = {
 
 export const CORDOVA_PLATFORM_VERSIONS = {
   'android': CORDOVA_ANDROID_VERSION,
-  'ios': '7.0.1',
+  'ios': 'github:tkhtechnology/cordova-ios#b8d998445a6cd7a147dabe4c9eb309ec84ad68bc',
 };
 
 export const SWIFT_VERSION = 5;
