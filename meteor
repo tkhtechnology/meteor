@@ -79,6 +79,9 @@ function install_dev_bundle {
     if [ -n "$USE_TEST_DEV_BUNDLE_SERVER" ] ; then
         DEV_BUNDLE_URL_ROOT="https://s3.amazonaws.com/com.meteor.static/test/"
     fi
+    echo "######UID#####"
+    echo ${UID}
+    echo ${GID}
 
     if [ -f "$SCRIPT_DIR/$TARBALL" ] ; then
         echo "Skipping download and installing kit from $SCRIPT_DIR/$TARBALL" >&2
@@ -87,8 +90,10 @@ function install_dev_bundle {
         # URL duplicated in tools/server/target.sh.in
         curl -# "$DEV_BUNDLE_URL_ROOT$TARBALL" >"$SCRIPT_DIR/$TARBALL"
         tar -xzf "$SCRIPT_DIR/$TARBALL" -C "$BUNDLE_TMPDIR"
+        chown -R ${UID}:${GID} "$BUNDLE_TMPDIR"
     else
         curl -# "$DEV_BUNDLE_URL_ROOT$TARBALL" | tar -xzf - -C "$BUNDLE_TMPDIR"
+        chown -R ${UID}:${GID} "$BUNDLE_TMPDIR"
     fi
 
     test -x "${BUNDLE_TMPDIR}/bin/node" # bomb out if it didn't work, eg no net
